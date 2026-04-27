@@ -65,7 +65,11 @@ rapid-wait/
 ### 1. Clone the repository
 
 ```bash
+<<<<<<< HEAD
 git clone https://github.com/bifeoluwa12/rapid-waitlist
+=======
+git clone https://github.com/your-username/rapid-wait.git
+>>>>>>> ab2caad57eca76977f33f67307e8470006ff1ad2
 cd rapid-wait
 ```
 
@@ -79,9 +83,18 @@ npm install
 
 Create a `.env` file at the project root:
 
+<<<<<<< HEAD
 env
 DATABASE_URL="your-supabase-connection-string"
 
+=======
+```env
+DATABASE_URL="your-supabase-connection-string"
+```
+
+Get your connection string from:
+**Supabase Dashboard → Your Project → Settings → Database → Connection string (URI)**
+>>>>>>> ab2caad57eca76977f33f67307e8470006ff1ad2
 
 ### 4. Generate Prisma client
 
@@ -180,3 +193,16 @@ SELECT * FROM "Waitlist" ORDER BY "createdAt" DESC;
 ## 🤝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+<<<<<<< HEAD
+=======
+
+---
+
+## 📄 License
+
+[MIT](LICENSE)
+
+---
+
+<p align="center">Built with 💜 using Next.js + Supabase</p>
+>>>>>>> ab2caad57eca76977f33f67307e8470006ff1ad2
