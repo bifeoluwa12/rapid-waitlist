@@ -1,0 +1,17 @@
+{
+  "node": {
+    "400f84954af9ae049098f2d07419c1a84e08d499df": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "joinWaitlist",
+          "filename": "src/app/actions.ts"
+        }
+      },
+      "exportedName": "joinWaitlist",
+      "filename": "src/app/actions.ts"
+    }
+  },
+  "edge": {}
+}
