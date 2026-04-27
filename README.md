@@ -67,8 +67,6 @@ rapid-wait/
 ```bash
 <<<<<<< HEAD
 git clone https://github.com/bifeoluwa12/rapid-waitlist
-=======
-git clone https://github.com/your-username/rapid-wait.git
 >>>>>>> ab2caad57eca76977f33f67307e8470006ff1ad2
 cd rapid-wait
 ```
