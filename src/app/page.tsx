@@ -8,12 +8,14 @@ export default function Home() {
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [message, setMessage] = useState("");
+  const [position, setPosition] = useState<number | null>(null);
 
   async function handleSubmit(formData: FormData) {
     setStatus("loading");
     const result = await joinWaitlist(formData);
     if (result?.success) {
       setStatus("success");
+      setPosition(result.position ?? null);
       setMessage("You're on the list! We'll notify you the moment it's available.");
     } else if (result?.error) {
       setStatus("error");
@@ -64,21 +66,13 @@ export default function Home() {
 
         {/* Icon */}
         <div className="mb-7 flex h-[76px] w-[76px] items-center justify-center rounded-[22px] border border-[#7F77DD]/30 bg-[#7F77DD]/12">
-          <svg
-            className="h-9 w-9"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#AFA9EC"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+          <svg className="h-9 w-9" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
         </div>
 
-        {/* Headline — your exact wording */}
+        {/* Headline */}
         <h1 className="text-5xl sm:text-6xl font-black tracking-tight leading-[1.08] text-white mb-5">
           Our Product{" "}
           <span className="bg-gradient-to-br from-[#c4bfed] via-[#7F77DD] to-[#534AB7] bg-clip-text text-transparent">
@@ -87,7 +81,7 @@ export default function Home() {
           Available Soon.
         </h1>
 
-        {/* Subtext — your exact wording, enhanced */}
+        {/* Subtext */}
         <p className="max-w-sm text-[#8880b8] text-base sm:text-lg leading-relaxed mb-9">
           Be the first to know when the item is available. Drop your email
           and we'll{" "}
@@ -100,8 +94,18 @@ export default function Home() {
         {/* Form */}
         <div className="w-full max-w-md mb-3">
           {status === "success" ? (
-            <div className="rounded-2xl border border-[#7F77DD]/40 bg-[#7F77DD]/15 px-6 py-5 text-sm font-semibold text-[#AFA9EC]">
-              🎉 You're on the list! We'll notify you the moment it's available.
+            <div className="rounded-2xl border border-[#7F77DD]/40 bg-[#7F77DD]/10 px-6 py-6 flex flex-col items-center gap-3">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#7F77DD]/20 border border-[#7F77DD]/40 text-2xl">
+                🎉
+              </div>
+              <p className="text-sm font-semibold text-[#AFA9EC]">{message}</p>
+              {position && (
+                <div className="mt-1 rounded-xl border border-[#7F77DD]/30 bg-[#7F77DD]/15 px-5 py-3 text-center">
+                  <p className="text-[11px] text-[#7a709e] uppercase tracking-widest mb-1">Your waitlist position</p>
+                  <p className="text-3xl font-black text-white">#{position}</p>
+                  <p className="text-[11px] text-[#7a709e] mt-1">The earlier you joined, the sooner you'll hear from us</p>
+                </div>
+              )}
             </div>
           ) : (
             <form
@@ -167,10 +171,7 @@ export default function Home() {
               ),
             },
           ].map((f) => (
-            <div
-              key={f.label}
-              className="flex flex-col items-center gap-2 rounded-[16px] border border-[#7F77DD]/14 bg-white/[0.025] p-4 sm:p-5"
-            >
+            <div key={f.label} className="flex flex-col items-center gap-2 rounded-[16px] border border-[#7F77DD]/14 bg-white/[0.025] p-4 sm:p-5">
               <div className="flex h-9 w-9 items-center justify-center rounded-[11px] bg-[#7F77DD]/14">
                 {f.icon}
               </div>
