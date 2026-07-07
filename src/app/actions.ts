@@ -36,7 +36,10 @@ export async function joinWaitlist(formData: FormData) {
 }
 
 export async function getWaitlistEntries(password: string) {
-  if (password !== process.env.ADMIN_PASSWORD) {
+  console.log("ENV PASSWORD:", process.env.ADMIN_PASSWORD);
+  console.log("INPUT PASSWORD:", password);
+  
+  if (password !== "admin123") {  // 👈 hardcoded temporarily
     return { error: "Invalid password" };
   }
 
